@@ -16,5 +16,5 @@ app.get('/', (req, res) => {
   });
 
 app.listen(port, () => {
-  console.log(`Ejemplo , prueba ${port}`)
+  console.log(`Servidor levantado en el puerto ${port}`)
 })
