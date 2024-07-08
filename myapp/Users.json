@@ -1,0 +1,38 @@
+[
+  {
+    "id": "0",
+    "password": "string",
+    "first_name": "string",
+    "last_name": "string",
+    "username": "string",
+    "email": "string",
+    "gender": "string"
+  },
+  {
+    "id": "1",
+    "password": "string",
+    "first_name": "string",
+    "last_name": "string",
+    "username": "string",
+    "email": "string",
+    "gender": "string"
+  },
+  {
+    "id": "2",
+    "password": "string",
+    "first_name": "string",
+    "last_name": "string",
+    "username": "string",
+    "email": "string",
+    "gender": "string"
+  },
+  {
+    "id": "4",
+    "password": "string",
+    "first_name": "string",
+    "last_name": "string",
+    "username": "string",
+    "email": "string",
+    "gender": "string"
+  }
+]
