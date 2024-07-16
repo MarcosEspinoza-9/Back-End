@@ -6,9 +6,9 @@ const port = 3002; //* La aplicación escuchará en el puerto 3002.
 //TODO: fs para leer archivos y path para manejar rutas de archivos.
 const fs = require("fs");
 const path = require("path");
-app.use(express.json());
+// app.use(express.json());
 
-//TODO: req es el objeto de solicitud
+//TODO: request es el objeto de solicitud
 //TODO: res el objeto de respuesta
 app.get("/", (req, res) => {
   const { name = "Marcos", lastName = "Espinoza" } = req.query; //* extraemos los parametros
@@ -52,6 +52,9 @@ app.get("/users", (req, res) => {
 });
 
 
+//************************Practica #2 - Endpoints ********************************************/
+
+
 //TODO: Ruta GET para obtener un usuario por ID
 app.get('/users/:id', (req, res) => {
   const userId = req.params.id;
@@ -76,7 +79,7 @@ app.get('/users/:id', (req, res) => {
 
 //TODO: Ruta POST para guardar un nuevo usuario
 app.post('/users', (req, res) => {
-  const newUser = req.body;
+  const newUser = req.body; //obtiene los datos 
   const filePath = path.join(__dirname, 'Users.json'); //* obtenemos la ruta
 
   //* leemos la ruta
@@ -93,7 +96,7 @@ app.post('/users', (req, res) => {
       users.push(newUser);
 
       //* stringify() convierte un objeto o valor de JavaScript en una cadena de texto JSON
-      fs.writeFile(filePath, JSON.stringify(users, null, 2), err => {
+      fs.writeFile(filePath, JSON.stringify(users, null, 1), err => {
         if (err) {
           res.status(500).send('Error al guardar el nuevo usuario');
         } else {
@@ -105,55 +108,29 @@ app.post('/users', (req, res) => {
 });
 
 //TODO: Ruta PUT para editar un usuario por ID
-app.put('/users/:id', (req, res) => {
-  const userId = req.params.id;
-  const updatedUser = req.body;
-  const filePath = path.join(__dirname, 'Users.json');
 
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-      res.status(500).send('Error al leer el archivo de usuarios');
-    } else {
-      let users = JSON.parse(data);
-      const index = users.findIndex(u => u.id === userId);
 
-      if (index !== -1) {
-        // Actualizar el usuario encontrado
-        users[index] = { ...users[index], ...updatedUser };
 
-        // Escribir los usuarios actualizados de vuelta al archivo
-        fs.writeFile(filePath, JSON.stringify(users, null, 2), err => {
-          if (err) {
-            res.status(500).send('Error al guardar el usuario actualizado');
-          } else {
-            res.send('Usuario actualizado correctamente');
-          }
-        });
-      } else {
-        res.status(404).send('Usuario no encontrado');
-      }
-    }
-  });
-});
 
 
 //TODO: Ruta DELETE para borrar un usuario por ID
 app.delete('/users/:id', (req, res) => {
-  const userId = req.params.id;
-  const filePath = path.join(__dirname, 'Users.json');
+  const userId = req.params.id; //obtener usuaro por id
+  const filePath = path.join(__dirname, 'Users.json'); //definir la ruta
 
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
       res.status(500).send('Error al leer el archivo de usuarios');
     } else {
       let users = JSON.parse(data);
-      const index = users.findIndex(u => u.id === userId);
+      const index = users.findIndex(u => u.id === userId); //busca el indice  del usuario en el array que conicida con el userID
 
-      if (index !== -1) {
+      if (index !== -1) { //si index no es -1 significa que el usuaro fue encontrado en el array
         // Eliminar el usuario encontrado del array
-        users.splice(index, 1);
+        users.splice(index, 1); //elimina el usuario del array Users en la posicion index
 
         // Escribir los usuarios actualizados de vuelta al archivo
+        //es un metodo que convierte un objeto o valor en una cadena Json
         fs.writeFile(filePath, JSON.stringify(users, null, 2), err => {
           if (err) {
             res.status(500).send('Error al eliminar el usuario');
@@ -169,7 +146,7 @@ app.delete('/users/:id', (req, res) => {
 });
 
 
-//TODO: Manejar la solicitud POST para la ruta /users
+//TODO: Manejar la solicitud GET para la ruta /users
 //*  app.get('/users', (req, res) => {
 //*    res.send('Recibida una solicitud GET en /users');
 //*  });
@@ -199,6 +176,3 @@ app.listen(port, () => {
   console.log(`Servidor levantado en el puerto ${port}`);
 });
 
-//************************Practica #2 - Endpoints ********************************************/
-
-// Ruta GET para obtener todos los usuarios en formato JSON

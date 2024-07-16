@@ -1,38 +1,29 @@
 [
   {
-    "id": "0",
-    "password": "string",
-    "first_name": "string",
-    "last_name": "string",
-    "username": "string",
-    "email": "string",
-    "gender": "string"
-  },
+  "id": "0",
+  "password": "123",
+  "first_name": "marcos",
+  "last_name": "espinoza",
+  "username": "marks",
+  "email": "marcos@mail.com",
+  "gender": "string"
+},
   {
     "id": "1",
-    "password": "string",
-    "first_name": "string",
-    "last_name": "string",
-    "username": "string",
-    "email": "string",
+    "password": "marki",
+    "first_name": "Juan",
+    "last_name": "Zavala",
+    "username": "zavalaG",
+    "email": "ZavalaG@gmail.com",
     "gender": "string"
   },
   {
     "id": "2",
-    "password": "string",
-    "first_name": "string",
-    "last_name": "string",
-    "username": "string",
-    "email": "string",
-    "gender": "string"
-  },
-  {
-    "id": "4",
-    "password": "string",
-    "first_name": "string",
-    "last_name": "string",
-    "username": "string",
-    "email": "string",
+    "password": "Joseasd",
+    "first_name": "Pepe",
+    "last_name": "Díaz",
+    "username": "Dias@gmail.com",
+    "email": "ZavalaG@gmail.com",
     "gender": "string"
   }
 ]
